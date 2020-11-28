@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:integration_test/second_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -79,6 +80,20 @@ class _MyHomePageState extends State<MyHomePage> {
           widget.title,
           key: Key("app_title"),
         ),
+        actions: [
+          IconButton(
+            key: Key("navigation_button"),
+            icon: Icon(Icons.person),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => SecondPage(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -114,7 +129,9 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         key: Key("increment"),
-        onPressed: _incrementCounter,
+        onPressed: () {
+          _incrementCounter();
+        },
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
