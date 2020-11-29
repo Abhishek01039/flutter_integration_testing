@@ -7,9 +7,9 @@ class AppScreen {
   final appBarText = find.byValueKey("app_title");
   final columnWidget = find.byType("Column");
   final navigationButton = find.byValueKey("navigation_button");
-  FlutterDriver driver;
+  FlutterDriver _driver;
   AppScreen(FlutterDriver flutterDriver) {
-    driver = flutterDriver;
+    _driver = flutterDriver;
   }
 
   Future<void> verifyTheAppBarText() async {
@@ -17,7 +17,7 @@ class AppScreen {
   }
 
   Future<void> verifyColumnIsInCenter() async {
-    var driverOffset = await driver.getCenter(columnWidget);
+    var driverOffset = await _driver.getCenter(columnWidget);
     print(driverOffset);
   }
 
@@ -27,19 +27,19 @@ class AppScreen {
 
   Future<void> pressFloatingActionButtonTwice() async {
     // tap floating action button
-    await driver.tap(floatingButton);
+    await _driver.tap(floatingButton);
     expect(await _getTextByScreen(counterText), "1");
 
     // tap floating action button
-    await driver.tap(floatingButton);
+    await _driver.tap(floatingButton);
     expect(await _getTextByScreen(counterText), "2");
   }
 
   Future<void> pressNavigationButton() async {
-    await driver.tap(navigationButton);
+    await _driver.tap(navigationButton);
   }
 
   Future<String> _getTextByScreen(SerializableFinder finder) async {
-    return await driver.getText(finder);
+    return await _driver.getText(finder);
   }
 }
