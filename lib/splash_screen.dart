@@ -12,7 +12,7 @@ class SplashPage extends StatelessWidget {
         context,
         MaterialPageRoute(
           builder: (_) => MyHomePage(
-            title: "sdfsafsa",
+            title: "Flutter Demo Home Page",
           ),
         ),
       );

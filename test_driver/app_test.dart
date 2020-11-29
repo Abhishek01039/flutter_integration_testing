@@ -22,9 +22,9 @@ void main() {
     tearDownAll(() async {
       driver?.close();
     });
-    test("Show Splash Screen", () async {
+    test("User should able to see the see splash screen", () async {
       await splashScreen.verifyNetworkImage();
-      await splashScreen.verifyAppText();
+      // await splashScreen.verifyAppText();
     });
     test('AppBar is Flutter Demo Home Page', () async {
       await appScreen.verifyTheAppBarText();
