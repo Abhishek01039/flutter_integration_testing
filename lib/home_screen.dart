@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:integration_test/extension/string_extension.dart';
 import 'package:integration_test/second_screen.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -21,7 +24,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-
+  double value = 123.234322343243242432;
+  String str = "krishna yadav";
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -89,8 +93,22 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
             ),
             Text(
-              '$_counter',
+              CounterExptension(_counter).addOne().toString(),
               key: Key("counter"),
+              style: Theme.of(context).textTheme.headline4,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 30),
+              child: Text(
+                'Double value should have only two decimal though extension',
+              ),
+            ),
+            Text(
+              Decimal(value).keepTwoDigitDecimal().toString(),
+              style: Theme.of(context).textTheme.headline4,
+            ),
+            Text(
+              FirstLetterUpper(str).toMehod().toString(),
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
@@ -107,7 +125,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
 // class MyHomePage extends StatelessWidget {
 //   @override
 //   Widget build(BuildContext context) {
